@@ -1,0 +1,34 @@
+<h1><%= @race.name %></h1>
+<% if @race.over? %>
+  <p><%= link_to 'Results', race_path(@race, show: 'results') %></p>
+<% end %>
+
+<% if @race.conference_name? %>
+  <p>Conference: <%= link_to_if @race.conference_url?, @race.conference_name, @race.conference_url %></p>
+<% end %>
+<% if @race.runkeeper_url? %>
+  <p>on <%= link_to 'runkeeper', @race.runkeeper_url %></p>
+<% end %>
+
+<p>Time: <%= l @race.time, format: :short %></p>
+<%= simple_format @race.description if @race.description? %>
+
+<p>Organized by: <%= link_to @organizer.name, @organizer %></p>
+
+<h2>Runners</h2>
+<% if current_user && !@race.runners.include?(current_user) %>
+  <p><%= link_to 'Sign up for this race', race_attendance_path, method: 'post' %></p>
+<% elsif current_user %>
+  <p><%= link_to 'Drop out of this race', race_attendance_path, method: 'delete' %></p>
+<% end %>
+
+
+<% if @runners.any? %>
+<ul>
+  <% @runners.each do |runner| %>
+    <li><%= link_to runner.name, runner %></li>
+  <% end %>
+</ul>
+<% else %>
+  <p>Nobody is running this race yet.</p>
+<% end %>

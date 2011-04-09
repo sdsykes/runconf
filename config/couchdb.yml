@@ -1,0 +1,6 @@
+development:
+  database: runconf_development
+  validation_framework: :active_model
+test:
+  database: runconf_test
+  validation_framework: :active_model

@@ -1,0 +1,21 @@
+<h1><%= @race.name %> Results</h1>
+<%= link_to 'back to race', @race %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th>Name</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results.each.with_index do |runner, time, i| %>
+      <tr>
+        <td><%= i %></td>
+        <td><%= runner.name %></td>
+        <td><%= time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

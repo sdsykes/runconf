@@ -1,0 +1,11 @@
+<p>runconf helps to organize conference runs (as in running from A to B for recreation)</p>
+
+<% if @upcoming_races.any? %>
+  <h1>Upcoming Races</h1>
+
+  <ul>
+    <% @upcoming_races.each do |race| %>
+      <li><%= link_to race.name, race %></li>
+    <% end %>
+  </ul>
+<% end %>
