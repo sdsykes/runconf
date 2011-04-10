@@ -1,6 +1,7 @@
 class Race
   include CouchPotato::Persistence
   
+  property :name
   property :time, type: Time
   property :description
   property :conference_name
@@ -8,7 +9,7 @@ class Race
   property :runkeeper_url
   property :organizer_id
   property :distance, type: Float
-  property :runner_ids, default: {} # {user_id => time}
+  property :runs, default: []
   
   view :by_time, key: :time
   view :by_organizer_id, key: :organizer_id
@@ -21,24 +22,18 @@ class Race
   end
   
   def runners
-    @runners ||= database.view(User.by_id(keys: runner_ids.keys)).sort_by(&:name)
-  end
-  
-  def results
-    @results ||= runner_ids.map{|pair|
-      [runners.find{|runner| runner.id = pair[0]}, paid[1]]
-    }
+    @runners ||= database.view(User.by_id(keys: runs.map(&:runner_id))).sort_by(&:name)
   end
   
   def over?
     self.time < Time.now
   end
   
-  def attend(user)
-    runner_ids[user.id] = nil
+  def run(user)
+    runs << Run.new(runner_id: user.id)
   end
   
   def drop_out(user)
-    runner_ids.delete user.id
+    runs.reject!{|run| run.runner_id == user.id}
   end
 end

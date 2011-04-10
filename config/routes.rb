@@ -1,6 +1,6 @@
 Runconf::Application.routes.draw do
   resources :races do
-    resource :attendance, only: [:create, :destroy]
+    resource :run, only: [:create, :destroy]
   end
   resources :users, only: :show
   resource :account, only: :show

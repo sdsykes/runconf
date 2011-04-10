@@ -1,0 +1,10 @@
+<%= link_to 'Organize a Race', new_race_path %>
+
+<% if @races.any? %>
+  <h2>Races Organized</h2>
+  <ul>
+    <% @races.each do |race| %>
+      <li><%= link_to race.name, race %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,9 +1,9 @@
-class AttendancesController < ApplicationController
+class RunsController < ApplicationController
   before_filter :require_login
   
   def create
     race = db.load params[:race_id]
-    race.attend current_user
+    race.run current_user
     db.save race
     redirect_to race
   end

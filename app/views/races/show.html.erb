@@ -10,16 +10,16 @@
   <p>on <%= link_to 'runkeeper', @race.runkeeper_url %></p>
 <% end %>
 
-<p>Time: <%= l @race.time, format: :short %></p>
+<p>Time: <%= l @race.time, format: :long %></p>
 <%= simple_format @race.description if @race.description? %>
 
-<p>Organized by: <%= link_to @organizer.name, @organizer %></p>
+<p>Organized by: <%= link_to @race.organizer.name, @race.organizer %></p>
 
 <h2>Runners</h2>
 <% if current_user && !@race.runners.include?(current_user) %>
-  <p><%= link_to 'Sign up for this race', race_attendance_path, method: 'post' %></p>
+  <p><%= link_to 'Sign up for this race', race_run_path(@race), method: 'post' %></p>
 <% elsif current_user %>
-  <p><%= link_to 'Drop out of this race', race_attendance_path, method: 'delete' %></p>
+  <p><%= link_to 'Drop out of this race', race_run_path(@race), method: 'delete' %></p>
 <% end %>
 
 

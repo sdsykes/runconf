@@ -11,8 +11,9 @@ class RacesController < ApplicationController
   
   def create
     @race = Race.new params[:race]
+    @race.organizer_id = current_user.id
     if db.save @race
-      redirect_to race_path
+      redirect_to @race
     else
       render 'new'
     end

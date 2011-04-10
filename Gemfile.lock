@@ -34,6 +34,7 @@ GEM
     celerity (0.8.2)
     childprocess (0.1.4)
       ffi (~> 0.6.3)
+    configuration (1.2.0)
     couch_potato (0.4.0)
       activemodel
       couchrest (>= 1.0.1)
@@ -66,6 +67,9 @@ GEM
     i18n (0.5.0)
     json (1.4.6)
     json_pure (1.4.6)
+    launchy (0.3.7)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
     mail (2.2.13)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -132,6 +136,19 @@ GEM
     rake (0.8.7)
     rest-client (1.6.1)
       mime-types (>= 1.16)
+    rspec (2.4.0)
+      rspec-core (~> 2.4.0)
+      rspec-expectations (~> 2.4.0)
+      rspec-mocks (~> 2.4.0)
+    rspec-core (2.4.0)
+    rspec-expectations (2.4.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.4.0)
+    rspec-rails (2.4.1)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
+      rspec (~> 2.4.0)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
@@ -159,5 +176,7 @@ DEPENDENCIES
   capybara
   couch_potato
   cucumber-rails
+  launchy
   omniauth
   railties
+  rspec-rails
