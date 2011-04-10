@@ -12,3 +12,12 @@ When /^I add the race "([^"]*)" on the date "([^"]*)"$/ do |name, time|
   click_button 'Add Race'
 end
 
+When /^I enter the following race results for "([^"]+)"$/ do |name, table|
+  race = DB.view(Race.by_name(name)).first
+  visit race_path(race)
+  click_link 'Results'
+  table.rows_hash.each do |name, time|
+    fill_in name, with: time
+  end
+  click_button 'Save Results'
+end

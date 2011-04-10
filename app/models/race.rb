@@ -28,12 +28,30 @@ class Race
   validates_presence_of :name, :time
   validates_numericality_of :distance
   
+  def organizer?(user)
+    user == organizer
+  end
+  
   def organizer
     @organizer ||= database.load organizer_id
   end
   
   def runners
     @runners ||= database.view(User.by_id(keys: runs.map(&:runner_id))).sort_by(&:name)
+  end
+  
+  def results
+    @results ||= runs.map {|run|
+      run.runner = runners.find{|runner| runner.id == run.runner_id}
+      run
+    }.sort_by{|run|
+      if run.time.present?
+        fragments = run.time.split(':')
+        fragments[0].to_i * 60 + fragments[1].to_i
+      else
+        99999999
+      end
+    }
   end
   
   def over?

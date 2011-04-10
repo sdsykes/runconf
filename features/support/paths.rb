@@ -13,6 +13,10 @@ module NavigationHelpers
     when /the race "([^"]+)"/
       race = DB.view(Race.by_name($1))
       race_path(race)
+    when /the results for "([^"]+)"/
+      race = DB.view(Race.by_name($1))
+      race_path(race, show: 'results')
+    
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

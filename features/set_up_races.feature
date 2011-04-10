@@ -1,4 +1,4 @@
-Feature: Races
+Feature: Set up Races
 
 Background:
   Given I am signed in as "Alex"

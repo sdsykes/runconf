@@ -5,3 +5,6 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 Runconf::Application.load_tasks
+
+task 'db:test:prepare' do
+end

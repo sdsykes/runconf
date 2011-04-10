@@ -14,7 +14,7 @@
     <% unless current_user %>
       <%= link_to "Sign in with GitHub", "/auth/github" %>
     <% else %>
-      <%= link_to 'Sign out', session_path, method: :destroy %>
+      <%= link_to 'Sign out', session_path, method: :delete %>
     <% end %>
   </navigation>
   <% [:alert, :notice].each do |type| %>

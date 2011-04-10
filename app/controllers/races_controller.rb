@@ -27,6 +27,16 @@ class RacesController < ApplicationController
     else
       @runners = @race.runners
     end
+  end
+  
+  def update
+    race = db.load params[:id]
+    params[:results].each do |runner_id, time|
+      race.runs.find{|run| run.runner_id == runner_id}.time = time
+    end
     
+    race.is_dirty
+    db.save race
+    redirect_to race_path(race, show: 'results'), notice: 'Results updated.'
   end
 end

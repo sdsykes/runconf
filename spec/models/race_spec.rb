@@ -27,3 +27,16 @@ describe Race, '.by_runner_id' do
     Race.by_runner_id.should map(Race.new(runs: [Run.new(runner_id: 'user-1')])).to(['user-1', 1])
   end
 end
+
+describe Race, '#results' do
+  it 'loads the users' do
+  end
+  
+  it 'sorts the runs by time' do
+    run1 = stub(:run1, time: '21:36').as_null_object
+    run2 = stub(:run2, time: '').as_null_object
+    run3 = stub(:run3, time: '12:56').as_null_object
+    race = Race.new runs: [run1, run2, run3], database: stub.as_null_object
+    race.results.should == [run3, run1, run2]
+  end
+end

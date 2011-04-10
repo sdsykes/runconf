@@ -1,21 +1,29 @@
 <h1><%= @race.name %> Results</h1>
 <%= link_to 'back to race', @race %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Position</th>
-      <th>Name</th>
-      <th>Time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @results.each.with_index do |runner, time, i| %>
+<%= form_for @race do |f| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= i %></td>
-        <td><%= runner.name %></td>
-        <td><%= time %></td>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Time</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @results.each.with_index do |result, i| %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <% if @race.organizer?(current_user)%>
+            <td><%= label_tag "results_#{result.runner.id}", result.runner.name %></td>
+            <td><%= text_field_tag "results[#{result.runner.id}]", result.time %></td>
+          <% else %>
+            <td><%= result.runner.name %></td>
+            <td><%= result.time %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p><%= f.submit "Save Results" %></p>
+<% end %>
