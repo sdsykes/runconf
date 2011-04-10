@@ -35,7 +35,7 @@ GEM
     childprocess (0.1.4)
       ffi (~> 0.6.3)
     configuration (1.2.0)
-    couch_potato (0.4.0)
+    couch_potato (0.5.1)
       activemodel
       couchrest (>= 1.0.1)
       json
@@ -174,7 +174,7 @@ DEPENDENCIES
   actionmailer
   actionpack
   capybara
-  couch_potato
+  couch_potato (>= 0.5.1)
   cucumber-rails
   launchy
   omniauth

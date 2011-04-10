@@ -1,3 +1,3 @@
-Given /^I am signed in$/ do
-  page.driver.post(session_path, {}, {'omniauth.auth' => {'uid' => '1', 'name' => 'joe'}})
+Given /^I am signed in as "([^"]+)"$/ do |name|
+  page.driver.post(session_path, {}, {'omniauth.auth' => {'uid' => '1', 'name' => name}})
 end

@@ -21,3 +21,9 @@ describe Race, '#drop_out' do
     race.runs.should == [run2]
   end
 end
+
+describe Race, '.by_runner_id' do
+  it 'maps each runner' do
+    Race.by_runner_id.should map(Race.new(runs: [Run.new(runner_id: 'user-1')])).to(['user-1', 1])
+  end
+end

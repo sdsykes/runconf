@@ -17,14 +17,14 @@
 
 <h2>Runners</h2>
 <% if current_user && !@race.runners.include?(current_user) %>
-  <p><%= link_to 'Sign up for this race', race_run_path(@race), method: 'post' %></p>
+  <p><%= link_to 'Run this race', race_run_path(@race), method: 'post' %></p>
 <% elsif current_user %>
   <p><%= link_to 'Drop out of this race', race_run_path(@race), method: 'delete' %></p>
 <% end %>
 
 
 <% if @runners.any? %>
-<ul>
+<ul class="runners">
   <% @runners.each do |runner| %>
     <li><%= link_to runner.name, runner %></li>
   <% end %>

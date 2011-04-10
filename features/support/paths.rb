@@ -10,6 +10,9 @@ module NavigationHelpers
 
     when /my account/
       account_path
+    when /the race "([^"]+)"/
+      race = DB.view(Race.by_name($1))
+      race_path(race)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
