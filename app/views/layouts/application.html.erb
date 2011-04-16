@@ -7,10 +7,10 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="head">
+  <div id="head" class="container">
     runconf
   </div>
-  <navigation>
+  <navigation class="container">
     <% unless current_user %>
       <%= link_to "Sign in with GitHub", "/auth/github" %>
     <% else %>
@@ -22,8 +22,9 @@
       <div class="flash <%= type %>"><%= flash[type] %></div>
     <% end %>
   <% end %>
-
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
