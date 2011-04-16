@@ -9,6 +9,7 @@ gem 'omniauth'
 
 group :development do
   gem 'rspec-rails'
+  gem 'heroku'
 end
 
 group :test do
