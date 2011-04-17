@@ -67,6 +67,9 @@ GEM
     heroku (1.20.1)
       launchy (~> 0.3.2)
       rest-client (< 1.7.0, >= 1.4.0)
+    hoptoad_notifier (2.4.6)
+      activesupport
+      builder
     i18n (0.5.0)
     json (1.4.6)
     json_pure (1.4.6)
@@ -180,6 +183,7 @@ DEPENDENCIES
   couch_potato (>= 0.5.1)
   cucumber-rails
   heroku
+  hoptoad_notifier
   launchy
   omniauth
   railties

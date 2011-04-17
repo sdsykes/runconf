@@ -6,6 +6,7 @@ gem 'actionmailer'
 
 gem 'couch_potato', '>=0.5.1'
 gem 'omniauth'
+gem 'hoptoad_notifier'
 
 group :development do
   gem 'rspec-rails'
