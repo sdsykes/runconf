@@ -4,7 +4,7 @@ gem 'railties'
 gem 'actionpack'
 gem 'actionmailer'
 
-gem 'couch_potato', '>=0.5.1'
+gem 'couch_potato', '>=0.5.2'
 gem 'omniauth'
 gem 'hoptoad_notifier'
 
