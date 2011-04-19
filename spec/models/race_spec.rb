@@ -40,3 +40,9 @@ describe Race, '#results' do
     race.results.should == [run3, run1, run2]
   end
 end
+
+describe Race, '#runners' do
+  it "should not ask couch but return an empty array if there are no runs, because bigcouch doesn't like empty keys" do
+    Race.new.runners.should == []
+  end
+end

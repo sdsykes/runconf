@@ -37,7 +37,11 @@ class Race
   end
   
   def runners
-    @runners ||= database.view(User.by_id(keys: runs.map(&:runner_id))).sort_by(&:name)
+    if runs.empty?
+      []
+    else
+      @runners ||= database.view(User.by_id(keys: runs.map(&:runner_id))).sort_by(&:name)
+    end
   end
   
   def results
