@@ -1,23 +1,41 @@
 #head {
-	font-size: 2em;
+  padding-top: 15px;
+	font-size: 2.4em;
+	font-weight: bold;
+	background: gray;
+	height: 70px;
+	color: white;
+	background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0, rgb(163,163,163)),
+      color-stop(1, rgb(112,108,112))
+  );
+  background-image: -moz-linear-gradient(
+      center bottom,
+      rgb(163,163,163) 0%,
+      rgb(112,108,112) 100%
+  );
 }
 
-navigation {
-  background: black;
+.navigation {
+  background: rgb(163,163,163);
+  width: 100%;
+  margin-bottom: 2em;
 }
 
-navigation a {
+.navigation a {
   display: inline-block;
   color: white;
   font-size: 1.2em;
   text-decoration: none;
-  padding-left: 5px;
-  width: 100px;
-  background: #009900;
+  padding: 5px;
+  background: #0077aa;
 }
 
-navigation a:hover {
-  background: #00bb00;
+.navigation a:hover {
+  background: #0088bb;
   color: white;
 }
 
