@@ -8,6 +8,12 @@ Scenario: add race
     And I go to my account
     And I follow "Scotruby 5K"
   Then I should see "April 09, 2011 08:00"
+  
+Scenario: edit race
+  Given a race "Scotruby 5K"
+  When I change the name of the race "Scotruby 5K" to "Scotruby 10K"
+  Then there should be a race "Scotruby 10K"
+    But there should be no race "Scotruby 5K"
 
 Scenario: run race
   Given a race "Scotruby 5K"

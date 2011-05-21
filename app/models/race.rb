@@ -33,7 +33,7 @@ class Race
   end
   
   def organizer
-    @organizer ||= database.load organizer_id
+    @organizer ||= database.load! organizer_id
   end
   
   def runners

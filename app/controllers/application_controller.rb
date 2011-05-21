@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user
   
+  rescue_from CouchPotato::NotFound do
+    render file: 'public/404.html', status: :not_found, layout: false
+  end
+  
   private
   
   def current_user

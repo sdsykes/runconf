@@ -2,6 +2,7 @@
 <% if @race.over? %>
   <p><%= link_to 'Results', race_path(@race, show: 'results') %></p>
 <% end %>
+<%= link_to 'Edit Race', [:edit, @race] if @race.organizer?(current_user) %>
 
 <% if @race.conference_name? %>
   <p>Conference: <%= link_to_if @race.conference_url?, @race.conference_name, @race.conference_url %></p>

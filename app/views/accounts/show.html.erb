@@ -4,7 +4,7 @@
   <h2>Races Organized</h2>
   <ul class="races_organized">
     <% @races_organized.each do |race| %>
-      <li><%= link_to race.name, race %></li>
+      <li><%= link_to race.name, race, class: 'race' %></li>
     <% end %>
   </ul>
 <% end %>
@@ -13,7 +13,7 @@
   <h2>Races Run</h2>
   <ul class="races_run">
     <% @races_run.each do |race| %>
-      <li><%= link_to race.name, race %></li>
+      <li><%= link_to race.name, race, class: 'race' %></li>
     <% end %>
   </ul>
 <% end %>

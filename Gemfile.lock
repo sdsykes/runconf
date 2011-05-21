@@ -35,7 +35,7 @@ GEM
     childprocess (0.1.4)
       ffi (~> 0.6.3)
     configuration (1.2.0)
-    couch_potato (0.5.2)
+    couch_potato (0.5.4)
       activemodel
       couchrest (>= 1.0.1)
       json

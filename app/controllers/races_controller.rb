@@ -19,8 +19,12 @@ class RacesController < ApplicationController
     end
   end
   
+  def edit
+    @race = db.load! params[:id]
+  end
+  
   def show
-    @race = db.load params[:id]
+    @race = db.load! params[:id]
     if params[:show] == 'results'
       @results = @race.results
       render 'results' 
@@ -31,12 +35,17 @@ class RacesController < ApplicationController
   
   def update
     race = db.load params[:id]
-    params[:results].each do |runner_id, time|
-      race.runs.find{|run| run.runner_id == runner_id}.time = time
-    end
     
-    race.is_dirty
+    if params[:results]
+      params[:results].each do |runner_id, time|
+        race.runs.find{|run| run.runner_id == runner_id}.time = time
+      end
+      race.is_dirty
+      redirect_to race_path(race, show: 'results'), notice: 'Results updated.'
+    else
+      race.attributes = params[:race]
+      redirect_to race_path(race), notice: 'Race updated.'
+    end
     db.save race
-    redirect_to race_path(race, show: 'results'), notice: 'Results updated.'
   end
 end

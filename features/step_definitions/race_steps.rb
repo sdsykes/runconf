@@ -8,7 +8,7 @@ When /^I add the race "([^"]*)" on the date "([^"]*)"$/ do |name, time|
   click_link 'Organize a Race'
   fill_in 'Name *', with: name
   fill_in 'Date/Time *', with: time
-  fill_in 'Distance *', with: '5K'
+  select '5K', from: 'Distance'
   click_button 'Add Race'
 end
 
@@ -20,4 +20,22 @@ When /^I enter the following race results for "([^"]+)"$/ do |name, table|
     fill_in name, with: time
   end
   click_button 'Save Results'
+end
+
+When /^I change the name of the race "([^"]*)" to "([^"]*)"$/ do |name, new_name|
+  race = DB.view(Race.by_name(name)).first
+  visit race_path(race)
+  click_link 'Edit Race'
+  fill_in 'Name', with: new_name
+  click_button 'Update Race'
+end
+
+Then /^there should be a race "([^"]*)"$/ do |name|
+  visit account_path
+  page.should have_css('.race', text: name)
+end
+
+Then /^there should be no race "([^"]*)"$/ do |name|
+  visit account_path
+  page.should have_no_css('.race', text: name)
 end
