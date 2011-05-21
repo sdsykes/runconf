@@ -7,6 +7,8 @@ gem 'actionmailer'
 gem 'couch_potato', '>=0.5.2'
 gem 'omniauth'
 gem 'hoptoad_notifier'
+gem 'girl_friday'
+gem 'httparty'
 
 group :development do
   gem 'rspec-rails'
@@ -17,4 +19,5 @@ group :test do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'webmock'
 end

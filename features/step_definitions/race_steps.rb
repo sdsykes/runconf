@@ -12,6 +12,18 @@ When /^I add the race "([^"]*)" on the date "([^"]*)"$/ do |name, time|
   click_button 'Add Race'
 end
 
+When /^I add the race "([^"]*)" with the runkeeper url "([^"]*)"$/ do |name, runkeeper_url|
+  WebMock.stub_request(:get, runkeeper_url).to_return(body: File.read(Rails.root.join('spec', 'fixtures', 'race.html')))
+  
+  visit account_path
+  click_link 'Organize a Race'
+  fill_in 'Name *', with: name
+  fill_in 'Date/Time *', with: '2011-05-01'
+  select '5K', from: 'Distance'
+  fill_in 'URL of the race', with: runkeeper_url
+  click_button 'Add Race'
+end
+
 When /^I enter the following race results for "([^"]+)"$/ do |name, table|
   race = DB.view(Race.by_name(name)).first
   visit race_path(race)
@@ -38,4 +50,8 @@ end
 Then /^there should be no race "([^"]*)"$/ do |name|
   visit account_path
   page.should have_no_css('.race', text: name)
+end
+
+Then 'I should see the race map' do
+  page.should have_css('#race_map')
 end

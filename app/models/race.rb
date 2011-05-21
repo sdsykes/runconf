@@ -10,6 +10,7 @@ class Race
   property :organizer_id
   property :distance, type: Float
   property :runs, default: []
+  property :map_points, default: []
   
   view :by_name, key: :name
   view :by_time, key: :time

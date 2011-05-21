@@ -13,6 +13,7 @@ class RacesController < ApplicationController
     @race = Race.new params[:race]
     @race.organizer_id = current_user.id
     if db.save @race
+      scrape_runkeeper_map @race
       redirect_to @race
     else
       render 'new'
@@ -47,5 +48,12 @@ class RacesController < ApplicationController
       redirect_to race_path(race), notice: 'Race updated.'
     end
     db.save race
+    scrape_runkeeper_map race
+  end
+  
+  private
+  
+  def scrape_runkeeper_map(race)
+    RUNKEEPER_MAP_QUEUE.push(race_id: race.id)
   end
 end
