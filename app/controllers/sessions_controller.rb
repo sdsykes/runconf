@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   end
   
   def create_user(auth)
-    user = User.new id: auth['uid'].to_s, name: auth['user_info']['name'], email: auth['user_info']['email']
+    user = User.new id: auth['uid'].to_s, name: auth['user_info']['name'] || auth['user_info']['nickname'], email: auth['user_info']['email']
     db.save user
     user
   end
